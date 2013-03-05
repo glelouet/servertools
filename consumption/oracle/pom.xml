@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>consumption</artifactId>
+		<groupId>fr.lelouet.servertools</groupId>
+		<version>0.11.5-SNAPSHOT</version>
+	</parent>
+	<groupId>fr.lelouet.servertools.consumption</groupId>
+	<artifactId>oracle</artifactId>
+	<name>consumption Oracle</name>
+	<description>guess the consumption of a server </description>
+	<packaging>pom</packaging>
+	<modules>
+		<module>analyze</module>
+		<module>package</module>
+	</modules>
+</project>

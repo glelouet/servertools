@@ -1,0 +1,6 @@
+#Tue May 03 01:46:40 CEST 2011
+version=0.0.1
+name=hameg
+author=guillaume Le Louet
+class=fr.lelouet.hameg.HamegPlugin
+jit=false

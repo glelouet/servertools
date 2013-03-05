@@ -1,0 +1,6 @@
+#Wed Jan 18 16:39:03 CET 2012
+version=0.0.1
+name=distant
+author=Frederic Dumont
+class=fr.dumont.distant.DistantPlugin
+jit=false

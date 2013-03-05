@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>servertools</artifactId>
+		<groupId>fr.lelouet</groupId>
+		<version>0.11.5-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+  <artifactId>consumption</artifactId>
+  <packaging>pom</packaging>
+  <name>consumption</name>
+  <description>contains drivers to get a server consumption</description>
+  <modules>
+  	<module>consumption-model</module>
+  	<module>hameg</module>
+    <module>wattsup</module>
+    <module>oracle</module>
+    <module>consumption-main</module>
+    <module>consumption-GUI</module>
+    <module>ipmi</module>
+    <module>distant-driver</module>
+  </modules>
+  <groupId>fr.lelouet.servertools</groupId>
+</project>

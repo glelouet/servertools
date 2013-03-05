@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>oracle</artifactId>
+		<groupId>fr.lelouet.servertools.consumption</groupId>
+		<version>0.11.5-SNAPSHOT</version>
+	</parent>
+	<groupId>fr.lelouet.servertools.consumption.oracle</groupId>
+	<artifactId>package</artifactId>
+	<name>oracle package</name>
+	<description>package the tools to monitor the consumption and activities of a server, and deduce its vms' consumptions</description>
+	<dependencies>
+		<dependency>
+			<groupId>fr.lelouet.servertools.drivers</groupId>
+			<artifactId>vmwaredriver</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>fr.lelouet.servertools.consumption</groupId>
+			<artifactId>consumption-main</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>fr.lelouet.servertools.performance</groupId>
+			<artifactId>vmwaremonitor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>fr.lelouet.servertools.consumption.oracle</groupId>
+			<artifactId>analyze</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>fr.lelouet.servertools.consumption</groupId>
+			<artifactId>distant-driver</artifactId>
+		</dependency>
+	</dependencies>
+</project>

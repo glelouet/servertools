@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>performance</artifactId>
+		<groupId>fr.lelouet.servertools</groupId>
+		<version>0.11.5-SNAPSHOT</version>
+	</parent>
+	<groupId>fr.lelouet.servertools.performance</groupId>
+	<artifactId>kvmmonitor</artifactId>
+	<name>KvmMonitor</name>
+	<description>monitor the performance  of VMs in a kvm host.</description>
+	<dependencies>
+		<dependency>
+			<groupId>fr.lelouet.servertools.performance</groupId>
+			<artifactId>perf-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>fr.lelouet.tooling</groupId>
+			<artifactId>regression</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>fr.lelouet.tooling</groupId>
+			<artifactId>sorters</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>emn-entropy</id>
+			<name>emn-entropy</name>
+			<url>http://www.emn.fr/z-info/entropy/repository/</url>
+		</repository>
+	</repositories>
+	<!-- <build> -->
+	<!-- <plugins> -->
+	<!-- <plugin> -->
+	<!-- <groupId>org.codehaus.groovy</groupId> -->
+	<!-- <artifactId>groovy-eclipse-compiler</artifactId> -->
+	<!-- </plugin> -->
+	<!-- </plugins> -->
+	<!-- </build> -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>localKVMMonitor</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+                            <finalName>localKVMMonitor</finalName>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+							<archive>
+								<manifest>
+									<mainClass>fr.lelouet.server.perf.PerfToolsExecution</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

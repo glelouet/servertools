@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>performance</artifactId>
+		<groupId>fr.lelouet.servertools</groupId>
+		<version>0.11.5-SNAPSHOT</version>
+	</parent>
+	<groupId>fr.lelouet.servertools.performance</groupId>
+	<artifactId>graphs</artifactId>
+	<name>PerformanceGraphs</name>
+	<description>provides graphical representation of the performance counters</description>
+	<dependencies>
+		<dependency>
+			<groupId>fr.lelouet.servertools.performance</groupId>
+			<artifactId>perf-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jcommon</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</snapshots>
+			<id>emn-entropy</id>
+			<name>emn-entropy</name>
+			<url>http://www.emn.fr/z-info/entropy/repository/</url>
+		</repository>
+	</repositories>
+</project>

@@ -1,0 +1,4 @@
+pid=$(ps -A | grep firefox | tail -n 1 | sed 's/^ *//' |sed 's/ .*//'); echo "pid:$pid";perf stat -p $pid -e cache-misses
+
+
+bash -c 'perf stat -p 15448& pid=${!}; sleep 1;kill -2 $pid'

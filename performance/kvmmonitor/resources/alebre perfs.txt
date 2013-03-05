@@ -1,0 +1,10 @@
+alebre>	megaTarzan: Tu voulais me voir pourquoi (et surtout pour combien de temps ;) ? )
+	<alebre>	J'ai deux cours à preparer pour jeudi
+	<alebre>	donc suivant le temps que tu prévois, peut etre définir un creneau, je serais plus à meme de t'accorder le temps nécessaire
+	<alebre>	https://perf.wiki.kernel.org/index.php/Main_Page
+	<alebre>	from the wiki :"the simplest way to start profiling an userspace program is to use the "perf record" and "perf report" command as follows"
+	<alebre>	http://lwn.net/Articles/336542/
+	<alebre>	voila deux spaghetttis à tirer
+	<alebre>	et à voir ou cela mene
+	<alebre>	megaTarzan: et la un long survol : http://linuxplumbersconf.org/2009/slides/Arnaldo-Carvalho-de-Melo-perf.pdf
+	<alebre>	tu trouveras peut etre ta reponse dedans

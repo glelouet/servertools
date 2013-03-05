@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>oracle</artifactId>
+		<groupId>fr.lelouet.servertools.consumption</groupId>
+		<version>0.11.3-SNAPSHOT</version>
+	</parent>
+	<groupId>fr.lelouet.servertools.consumption.oracle</groupId>
+	<artifactId>generatedata</artifactId>
+	<name>generate Data</name>
+	<description>generate data for an oracle</description>
+	<repositories>
+		<repository>
+			<id>emn-entropy</id>
+			<name>emn-entropy</name>
+			<url>http://www.emn.fr/z-info/entropy/repository/</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>fr.lelouet.servertools.consumption</groupId>
+			<artifactId>consumption-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+        <dependency>
+            <groupId>fr.lelouet.servertools.consumption</groupId>
+            <artifactId>distant-driver</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>fr.lelouet.servertools.performance</groupId>
+			<artifactId>vmwaremonitor</artifactId>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>fr.lelouet.servertools.stress</groupId> -->
+<!-- 			<artifactId>stress-RMI</artifactId> -->
+<!-- 		</dependency> -->
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptor>${basedir}/src/main/assemblies/basicControl.xml</descriptor>
+							<archive>
+								<manifest>
+									<mainClass>fr.lelouet.consumption.oracle.generation.HardwiredStress</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

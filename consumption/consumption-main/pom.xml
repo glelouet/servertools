@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>consumption</artifactId>
+		<groupId>fr.lelouet.servertools</groupId>
+		<version>0.11.5-SNAPSHOT</version>
+	</parent>
+	<groupId>fr.lelouet.servertools.consumption</groupId>
+	<artifactId>consumption-main</artifactId>
+	<name>consumption-main</name>
+    <properties>
+        <!-- The main executable jar -->
+        <consumption.jarName>consumption.${maven.build.timestamp}</consumption.jarName>
+    </properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>makeexecutable</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<finalName>consumption</finalName>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<archive>
+								<manifest>
+									<mainClass>fr.lelouet.server.consumption.main.PluggedFactory</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy jar to site</id>
+                        <phase>deploy</phase>
+                        <configuration>
+                            <target>
+                                <copy tofile="${consumption.filesdir}/${consumption.jarName}.jar" file="target/consumption-jar-with-dependencies.jar" />
+                                <copy tofile="${consumption.filesdir}/consumption.last.jar" file="target/consumption-jar-with-dependencies.jar" />
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>fr.lelouet.servertools.consumption</groupId>
+			<artifactId>consumption-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
+</project>

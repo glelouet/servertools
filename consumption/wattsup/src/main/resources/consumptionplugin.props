@@ -1,0 +1,6 @@
+#Wed May 04 14:28:42 CEST 2011
+version=0.0.1
+name=wattsup
+author=guillaume Le Louet
+class=fr.lelouet.wattsup.WattsupPlugin
+jit=false

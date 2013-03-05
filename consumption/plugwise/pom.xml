@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>consumption</artifactId>
+		<groupId>fr.lelouet.servertools</groupId>
+		<version>0.11.3-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.lelouet.server.consumption</groupId>
+	<artifactId>plugwise</artifactId>
+	<name>plugwise</name>
+	<description>driver for getting informations with the plugwise protocole</description>
+	<repositories>
+		<repository>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>ignore</checksumPolicy>
+			</snapshots>
+			<id>emn-entropy</id>
+			<name>emn-entropy</name>
+			<url>http://www.emn.fr/z-info/entropy/repository/</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>fr.lelouet.tooling</groupId>
+			<artifactId>main</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>fr.lelouet.servertools.consumption</groupId>
+			<artifactId>consumption-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>local-repository</id>
+			<url>${consumption.deploypath}</url>
+		</repository>
+	</distributionManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.groovy.maven</groupId>
+				<artifactId>gmaven-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
