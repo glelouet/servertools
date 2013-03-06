@@ -1,6 +1,11 @@
 package fr.lelouet.consumption.oracle.decompose.peractivity;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 
 /** write activities, associated with time, in a file, and make some analyze */
@@ -72,6 +77,7 @@ public class ActivityData {
 			String[] tokens = line.split(TOKENSEPARATOR);
 			ret.put(Long.parseLong(tokens[0]), Double.parseDouble(tokens[1]));
 		}
+		reader.close();
 		return ret;
 	}
 

@@ -43,6 +43,7 @@ public class FileToSnapshot {
 		while ((line = reader.readLine()) != null) {
 			rawData.add(line);
 		}
+		reader.close();
 
 		FilteringTranslator t = new FilteringTranslator();
 

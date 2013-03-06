@@ -52,6 +52,7 @@ public class OneDimensionAnalyze {
 							System.out.println(" " + line);
 						}
 					} while (line != null);
+					br.close();
 				} catch (Exception e) {
 					logger.warn("", e);
 				}

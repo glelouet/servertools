@@ -1,6 +1,13 @@
 package fr.lelouet.server.perf.snapshot.storage;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.FilenameFilter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -138,6 +145,7 @@ public class FileStorage {
 				readLines.add(line);
 			}
 			readLines.add(null);
+			reader.close();
 			return converter.convertStrings(readLines);
 		} catch (Exception e) {
 			logger.warn("while loading from file " + toload + ":", e);

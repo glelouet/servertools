@@ -12,6 +12,5 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>analyze</module>
-		<module>package</module>
 	</modules>
 </project>

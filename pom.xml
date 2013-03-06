@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.lelouet</groupId>
 	<artifactId>servertools</artifactId>
@@ -6,7 +7,6 @@
 	<name>servertools</name>
 	<version>0.11.5-SNAPSHOT</version>
 	<description>contain tools to use, modelize and monitor servers and virtual machines, alone or in a datacenter</description>
-	<url>http://www.emn.fr/z-info/entropy/serverTools</url>
 	<scm>
 		<connection>scm:git:git://github.com/glelouet/servertools.git</connection>
 		<developerConnection>scm:git:https://glelouet@github.com:glelouet/servertools.git</developerConnection>
@@ -40,8 +40,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tooling.version>0.3.10</tooling.version>
+		<tooling.version>0.3.11-SNAPSHOT</tooling.version>
 		<cxf.version>2.2.3</cxf.version>
+		<java.version>1.6</java.version>
 	</properties>
 
 	<dependencyManagement>
@@ -165,26 +166,26 @@
 				<artifactId>stress-API</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-            <dependency>
-                <groupId>fr.lelouet.servertools.stress</groupId>
-                <artifactId>stress-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-<!--             <dependency> -->
-<!--                 <groupId>fr.lelouet.servertools.stress</groupId> -->
-<!--                 <artifactId>stress-RMI</artifactId> -->
-<!--                 <version>${project.version}</version> -->
-<!--             </dependency> -->
-            <dependency>
-                <groupId>fr.lelouet.servertools.stress</groupId>
-                <artifactId>stress-CPU</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>fr.lelouet.servertools.stress</groupId>
-                <artifactId>stress-DISK</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>fr.lelouet.servertools.stress</groupId>
+				<artifactId>stress-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- <dependency> -->
+			<!-- <groupId>fr.lelouet.servertools.stress</groupId> -->
+			<!-- <artifactId>stress-RMI</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<dependency>
+				<groupId>fr.lelouet.servertools.stress</groupId>
+				<artifactId>stress-CPU</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>fr.lelouet.servertools.stress</groupId>
+				<artifactId>stress-DISK</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>fr.lelouet.servertools.stress</groupId>
 				<artifactId>stress-NET</artifactId>
@@ -221,25 +222,20 @@
 
 	<repositories>
 		<repository>
-			<id>entropy repo</id>
-			<name>repository of the entropy project</name>
-			<url>http://www.emn.fr/z-info/entropy/repository/</url>
-		</repository>
-		<repository>
 			<id>guillaumerepo</id>
 			<name>guillaume le louet</name>
 			<url>http://www.emn.fr/z-info/glelou10/repository/</url>
 		</repository>
-		<repository>
-			<id>com.springsource.repository.bundles.release</id>
-			<name>EBR Spring Release Repository</name>
-			<url>http://repository.springsource.com/maven/bundles/release</url>
-		</repository>
-		<repository>
-			<id>com.springsource.repository.bundles.external</id>
-			<name>EBR External Release Repository</name>
-			<url>http://repository.springsource.com/maven/bundles/external</url>
-		</repository>
+		<!-- <repository> -->
+		<!-- <id>com.springsource.repository.bundles.release</id> -->
+		<!-- <name>EBR Spring Release Repository</name> -->
+		<!-- <url>http://repository.springsource.com/maven/bundles/release</url> -->
+		<!-- </repository> -->
+		<!-- <repository> -->
+		<!-- <id>com.springsource.repository.bundles.external</id> -->
+		<!-- <name>EBR External Release Repository</name> -->
+		<!-- <url>http://repository.springsource.com/maven/bundles/external</url> -->
+		<!-- </repository> -->
 	</repositories>
 
 	<build>
@@ -249,18 +245,18 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<compilerId>groovy-eclipse-compiler</compilerId>
+					<!-- <compilerId>groovy-eclipse-compiler</compilerId> -->
 					<verbose>true</verbose>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.codehaus.groovy</groupId>
-						<artifactId>groovy-eclipse-compiler</artifactId>
-						<version>2.6.0-01</version>
-					</dependency>
-				</dependencies>
+				<!-- <dependencies> -->
+				<!-- <dependency> -->
+				<!-- <groupId>org.codehaus.groovy</groupId> -->
+				<!-- <artifactId>groovy-eclipse-compiler</artifactId> -->
+				<!-- <version>2.6.0-01</version> -->
+				<!-- </dependency> -->
+				<!-- </dependencies> -->
 			</plugin>
 			<plugin>
 				<groupId>com.google.code.maven-replacer-plugin</groupId>
@@ -337,8 +333,7 @@
 					<artifactId>maven-release-plugin</artifactId>
 					<version>2.1</version>
 				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -359,26 +354,6 @@
 										</versionRange>
 										<goals>
 											<goal>format</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-compiler-plugin
-										</artifactId>
-										<versionRange>
-											[2.3.2,)
-										</versionRange>
-										<goals>
-											<goal>compile</goal>
-											<goal>testCompile</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
@@ -420,5 +395,6 @@
 	<modules>
 		<module>consumption</module>
 		<module>performance</module>
+		<module>temperature</module>
 	</modules>
 </project>

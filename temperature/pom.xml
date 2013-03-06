@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.lelouet</groupId>
+    <artifactId>servertools</artifactId>
+    <version>0.11.5-SNAPSHOT</version>
+  </parent>
+  <groupId>fr.lelouet.servertools</groupId>
+  <artifactId>temperature</artifactId>
+  <name>servertools-temperature</name>
+  <description>tools to get the temperature from a server</description>
+  <dependencies>
+  	<dependency>
+  	<groupId>fr.lelouet.tooling</groupId>
+  	<artifactId>containers</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>ch.qos.logback</groupId>
+  		<artifactId>logback-classic</artifactId>
+  		<optional>true</optional>
+  	</dependency>
+  </dependencies>
+</project>

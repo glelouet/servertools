@@ -12,6 +12,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
  * 
  * @author guillaume
  */
+@SuppressWarnings("deprecation")
 public class DistantDriverRetriever {
 
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory

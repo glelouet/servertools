@@ -7,7 +7,7 @@
 	</parent>
 	<groupId>fr.lelouet.servertools.performance</groupId>
 	<artifactId>perf-model</artifactId>
-	<name>Performance API</name>
+	<name>Performance model</name>
 	<description>the model and tools we use to monitor performance counters</description>
 	<dependencies>
             <dependency>
