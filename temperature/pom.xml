@@ -9,15 +9,23 @@
   <artifactId>temperature</artifactId>
   <name>servertools-temperature</name>
   <description>tools to get the temperature from a server</description>
-  <dependencies>
-  	<dependency>
-  	<groupId>fr.lelouet.tooling</groupId>
-  	<artifactId>containers</artifactId>
-  	</dependency>
-  	<dependency>
-  		<groupId>ch.qos.logback</groupId>
-  		<artifactId>logback-classic</artifactId>
-  		<optional>true</optional>
-  	</dependency>
-  </dependencies>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>temperature-API</module>
+  	<module>temperature-local</module>
+  </modules>
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>fr.lelouet.servertools.temperature</groupId>
+  			<artifactId>temperature-API</artifactId>
+  			<version>${project.version}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>fr.lelouet.servertools.temperature</groupId>
+  			<artifactId>temperature-local</artifactId>
+  			<version>${project.version}</version>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
 </project>
