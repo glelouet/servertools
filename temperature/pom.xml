@@ -13,6 +13,7 @@
   <modules>
   	<module>temperature-API</module>
   	<module>temperature-local</module>
+  	<module>temperature-remote</module>
   </modules>
   <dependencyManagement>
   	<dependencies>
