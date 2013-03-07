@@ -9,4 +9,10 @@
   <artifactId>temperature-remote</artifactId>
   <name>temperature-remote</name>
   <description>remote driver and server for temperature retrieval</description>
+  <dependencies>
+  	<dependency>
+  		<groupId>fr.lelouet.servertools.temperature</groupId>
+  		<artifactId>temperature-API</artifactId>
+  	</dependency>
+  </dependencies>
 </project>
