@@ -13,5 +13,10 @@
   		<groupId>fr.lelouet.servertools.temperature</groupId>
   		<artifactId>temperature-API</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>ch.qos.logback</groupId>
+  		<artifactId>logback-classic</artifactId>
+  		<optional>true</optional>
+  	</dependency>
   </dependencies>
 </project>
