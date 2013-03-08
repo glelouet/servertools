@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import fr.lelouet.servertools.temperature.MainMethod;
+import fr.lelouet.servertools.temperature.RetrieveSCV;
 import fr.lelouet.servertools.temperature.ServerSensor;
 import fr.lelouet.tools.containers.DelayingContainer;
 
@@ -99,14 +99,14 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 			@Override
 			public void run() {
 				try {
-					writer.write(SensorsExporter.RETRIEVEORDER+"\n");
+					writer.write(RemoteExporter.RETRIEVEORDER+"\n");
 					String line=null;
 					String parsed=null;
-					while(!(line=reader.readLine()).equals(SensorsExporter.RETRIEVEORDER) && line!=null){
+					while(!(line=reader.readLine()).equals(RemoteExporter.RETRIEVEORDER) && line!=null){
 						parsed=(parsed==null?"":parsed+"\n")+line;
 					}
 					if (parsed != null) {
-						SensorsEntry se = SensorsExporter
+						SensorsEntry se = RemoteExporter
 								.parseSensorsEntry(parsed);
 						retrievingEntry.set(se);
 					}
@@ -128,7 +128,7 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 
 	public static void main(String[] args) {
 		String address = "localhost";
-		int port = SensorsExporter.DEFAULT_PORT;
+		int port = RemoteExporter.DEFAULT_PORT;
 		for (String arg : args) {
 			if (arg.startsWith(TARGET_ARG)) {
 				String[] targets = arg.substring(TARGET_ARG.length())
@@ -143,7 +143,7 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 		}
 		RemoteConnection conn = new RemoteConnection();
 		conn.connect(address, port);
-		MainMethod.main(args, conn);
+		RetrieveSCV.main(args, conn);
 	}
 
 	protected class RemoteSensor implements ServerSensor {

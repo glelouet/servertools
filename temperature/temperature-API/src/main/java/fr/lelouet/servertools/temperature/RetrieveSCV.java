@@ -8,13 +8,16 @@ import java.util.ArrayList;
 import fr.lelouet.servertools.temperature.ServerConnection.SensorsEntry;
 
 /**
+ * main method to periodically retrieve the temperature and print it in csv
+ * format
+ * 
  * @author Guillaume Le Louët
- *
+ * 
  */
-public class MainMethod {
+public class RetrieveSCV {
 
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory
-			.getLogger(MainMethod.class);
+			.getLogger(RetrieveSCV.class);
 
 	public static final String DELAY_ARG = "-p";
 	public static final String HELP_ARG = "-h";

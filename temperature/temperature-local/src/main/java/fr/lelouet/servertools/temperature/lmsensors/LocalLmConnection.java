@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import fr.lelouet.servertools.temperature.MainMethod;
+import fr.lelouet.servertools.temperature.RetrieveSCV;
 import fr.lelouet.servertools.temperature.ServerConnection;
 import fr.lelouet.servertools.temperature.ServerSensor;
 import fr.lelouet.tools.containers.DelayingContainer;
@@ -136,7 +136,7 @@ public class LocalLmConnection implements ServerConnection {
 
 	public static void main(String[] args) {
 		LocalLmConnection conn = new LocalLmConnection();
-		MainMethod.main(args, conn);
+		RetrieveSCV.main(args, conn);
 	}
 
 	@Override

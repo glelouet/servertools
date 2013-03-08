@@ -17,10 +17,10 @@ import fr.lelouet.servertools.temperature.ServerConnection.SensorsEntry;
 
 /** exports a sensors to be available on the network
  * @author guillaume */
-public class SensorsExporter {
+public class RemoteExporter {
 
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory
-			.getLogger(SensorsExporter.class);
+			.getLogger(RemoteExporter.class);
 
 	public static final int DEFAULT_PORT = 8765;
 
