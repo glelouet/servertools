@@ -94,20 +94,29 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 		if (ret != null) {
 			return ret;
 		}
-		retrievingEntry = new DelayingContainer<SensorsEntry>();new Thread(new Runnable(){
-
+		ret = new DelayingContainer<SensorsEntry>();
+		retrievingEntry = ret;
+		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
+					// System.err.println("starting writing for retrieve");
 					writer.write(RemoteExporter.RETRIEVEORDER+"\n");
+					writer.flush();
 					String line=null;
 					String parsed=null;
-					while(!(line=reader.readLine()).equals(RemoteExporter.RETRIEVEORDER) && line!=null){
-						parsed=(parsed==null?"":parsed+"\n")+line;
+					while ((line = reader.readLine()) != null
+							&& !line.equals(RemoteExporter.RETRIEVEORDER)) {
+						// System.err.println("read : " + line);
+						parsed = (parsed == null ? "" : parsed + "\n") + line;
+						// System.err.println("parsed : " + parsed);
 					}
 					if (parsed != null) {
 						SensorsEntry se = RemoteExporter
 								.parseSensorsEntry(parsed);
+						if (se == null) {
+							System.err.println("could not parse "+parsed+" to a SensorsEntry");
+						}
 						retrievingEntry.set(se);
 					}
 				} catch (IOException e) {
@@ -116,7 +125,7 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 				}
 				retrievingEntry=null;
 			}}).start();
-		return retrievingEntry;
+		return ret;
 	}
 
 	@Override
@@ -142,6 +151,7 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 			}
 		}
 		RemoteConnection conn = new RemoteConnection();
+		System.err.println("connecting to " + address + ":" + port);
 		conn.connect(address, port);
 		RetrieveSCV.main(args, conn);
 	}

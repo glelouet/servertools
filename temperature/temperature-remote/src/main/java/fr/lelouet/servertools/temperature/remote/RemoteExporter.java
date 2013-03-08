@@ -45,6 +45,7 @@ public class RemoteExporter {
 						.hasNext();) {
 					SelectionKey key = i.next();
 					i.remove();
+					// System.err.println("key " + key + " selected");
 					if (key.isConnectable()) {
 						((SocketChannel) key.channel()).finishConnect();
 					}
@@ -55,10 +56,17 @@ public class RemoteExporter {
 						client.socket().setTcpNoDelay(true);
 						ExternalConnection ec = new ExternalConnection();
 						ec.socketChannel = client;
+						logger.debug("new external connection : "
+								+ client.socket().getPort());
 						sockets.put(client.register(selector, SelectionKey.OP_READ), ec);
 					}
 					if (key.isReadable()) {
-						handleRead(sockets.get(key), connection);
+						if (key.channel().isOpen()) {
+							handleRead(sockets.get(key), connection);
+						} else {
+							key.cancel();
+							sockets.remove(key);
+						}
 					}
 				}
 			}
@@ -77,8 +85,17 @@ public class RemoteExporter {
 	public static void handleRead(ExternalConnection ec,
 			ServerConnection connection) {
 		try {
-			ec.socketChannel.read(ec.buffer);
-			String s = ec.buffer.toString();
+			int read = ec.socketChannel.read(ec.buffer);
+			if (read < 0) {
+				ec.socketChannel.close();
+				return;
+			}
+			ec.buffer.flip();
+			byte[] bytearr = new byte[ec.buffer.limit()];
+			ec.buffer.get(bytearr);
+			String s = new String(bytearr);
+			logger.debug("read [" + s + "] on port "
+					+ ec.socketChannel.socket().getPort());
 			int idx = 0;
 			while ((idx = s.indexOf("\n")) > 0) {
 				idx = s.indexOf("\n", idx);
@@ -87,9 +104,10 @@ public class RemoteExporter {
 				ec.socketChannel.write(ByteBuffer.wrap((answer(order,
 						connection) + "\n")
 						.getBytes()));
-				System.err.println("after answering " + order + ", buffer=" + s);
+				// System.err.println("after answering " + order + ", buffer=" +
+				// s);
 			}
-			ec.buffer.reset();
+			ec.buffer.clear();
 			ec.buffer.asCharBuffer().put(s);
 		}
 		catch (IOException e) {
@@ -109,7 +127,7 @@ public class RemoteExporter {
 	 * @return the resulting answer of the order. */
 	public static String answer(String order,
 			ServerConnection connection) {
-		System.err.println("order : " + order);
+		// System.err.println("order : " + order);
 		if (order == null || order.length() == 0) {
 			return null;
 		}
@@ -136,7 +154,7 @@ public class RemoteExporter {
 			String[] keyval = vals[i].split(" : ");
 			ret.put(keyval[0], Double.parseDouble(keyval[1]));
 		}
-		return null;
+		return ret;
 	}
 
 	/** @param entry the entry to convert
