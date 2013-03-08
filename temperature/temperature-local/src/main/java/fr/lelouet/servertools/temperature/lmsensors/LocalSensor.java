@@ -16,7 +16,7 @@ public class LocalSensor implements ServerSensor {
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory
 	.getLogger(LocalSensor.class);
 
-	protected LocalLmSensor parent;
+	protected LocalLmConnection parent;
 
 	protected String id;
 
@@ -24,7 +24,7 @@ public class LocalSensor implements ServerSensor {
 	 * @param parent
 	 * @param id
 	 */
-	public LocalSensor(LocalLmSensor parent, String id) {
+	public LocalSensor(LocalLmConnection parent, String id) {
 		super();
 		this.parent = parent;
 		this.id = id;

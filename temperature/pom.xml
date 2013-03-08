@@ -27,6 +27,11 @@
   			<artifactId>temperature-local</artifactId>
   			<version>${project.version}</version>
   		</dependency>
+  		<dependency>
+  			<groupId>fr.lelouet.servertools.temperature</groupId>
+  			<artifactId>temperature-remote</artifactId>
+  			<version>${project.version}</version>
+  		</dependency>
   	</dependencies>
   </dependencyManagement>
 </project>

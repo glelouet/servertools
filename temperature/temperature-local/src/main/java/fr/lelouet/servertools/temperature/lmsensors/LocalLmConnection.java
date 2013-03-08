@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import fr.lelouet.servertools.temperature.MainMethod;
 import fr.lelouet.servertools.temperature.ServerConnection;
 import fr.lelouet.servertools.temperature.ServerSensor;
 import fr.lelouet.tools.containers.DelayingContainer;
@@ -21,10 +22,10 @@ import fr.lelouet.tools.containers.DelayingContainer;
  * @author Guillaume Le Louët
  *
  */
-public class LocalLmSensor implements ServerConnection {
+public class LocalLmConnection implements ServerConnection {
 
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory
-			.getLogger(LocalLmSensor.class);
+			.getLogger(LocalLmConnection.class);
 
 	HashMap<String, ServerSensor> sensors = null;
 
@@ -133,65 +134,9 @@ public class LocalLmSensor implements ServerConnection {
 		return ret;
 	}
 
-	public static final String DELAY_ARG = "-p";
-	public static final String HELP_ARG = "-h";
-	public static final String SEP_ARG = "-s";
-	public static final String NUM_ARG = "-n";
-
-	public static void main(String[] args) throws InterruptedException {
-		ArrayList<String> sensors = new ArrayList<String>();
-		long delay = 5;
-		long remain = -1;
-		String sep = ",";
-		if (args.length > 0) {
-			for (String arg : args) {
-				if (arg.startsWith(HELP_ARG)) {
-					printHelp();
-					return;
-				} else if (arg.startsWith(DELAY_ARG)) {
-					delay = Long.parseLong(arg.substring(DELAY_ARG.length()));
-				} else if (arg.startsWith(NUM_ARG)) {
-					remain = Long.parseLong(arg.substring(NUM_ARG.length()));
-				} else if (arg.startsWith(SEP_ARG)) {
-					sep = arg.substring(SEP_ARG.length());
-				} else {
-					sensors.add(arg);
-				}
-			}
-		}
-		delay *= 1000;
-		LocalLmSensor loc = new LocalLmSensor();
-		if (sensors.isEmpty()) {
-			sensors.addAll(loc.getSensorsIds());
-		}
-
-		String header = "date";
-		for (String s : sensors) {
-			header = header + sep + s;
-		}
-		System.err.println(header);
-
-		while (remain != 0) {
-			HashMap<String, Double> res = loc.retrieveValues();
-			String val = "" + System.currentTimeMillis();
-			for (String s : sensors) {
-				val += sep + res.get(s);
-			}
-			System.out.println(val);
-			remain--;
-			if (remain < 0) {
-				remain = -1;
-			}
-			if (remain != 0) {
-				Thread.sleep(delay);
-			}
-		}
-	}
-
-	public static void printHelp() {
-		System.out.println("args : [" + DELAY_ARG + "DELAY(seconds)] ["
-				+ NUM_ARG + "NUMBERiterations] [" + SEP_ARG
-				+ "SEPARATORoutput]");
+	public static void main(String[] args) {
+		LocalLmConnection conn = new LocalLmConnection();
+		MainMethod.main(args, conn);
 	}
 
 	@Override
