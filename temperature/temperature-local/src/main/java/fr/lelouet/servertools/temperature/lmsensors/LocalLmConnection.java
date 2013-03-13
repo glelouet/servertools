@@ -47,7 +47,6 @@ public class LocalLmConnection implements ServerConnection {
 		}
 	}
 
-
 	@Override
 	public Set<String> getSensorsIds() {
 		if (sensors == null) {
@@ -85,7 +84,9 @@ public class LocalLmConnection implements ServerConnection {
 			return ret;
 		} catch (IOException io) {
 			Throwable t = io.getCause();
-			if (t instanceof IOException && ((IOException) t).getLocalizedMessage().contains("error=2")) {
+			if (t instanceof IOException
+					&& ((IOException) t).getLocalizedMessage().contains(
+							"error=2")) {
 				logger.warn("program sensors not installed");
 			} else {
 				logger.warn("", io.getCause());
@@ -143,7 +144,8 @@ public class LocalLmConnection implements ServerConnection {
 		for (String arg : args) {
 			if (arg.startsWith(EXPORT_ARG)) {
 				String port = arg.substring(EXPORT_ARG.length());
-				export = port.length() > 0 ? Integer.parseInt(port)
+				export = port.length() > 0
+						? Integer.parseInt(port)
 						: RemoteExporter.DEFAULT_PORT;
 
 			}

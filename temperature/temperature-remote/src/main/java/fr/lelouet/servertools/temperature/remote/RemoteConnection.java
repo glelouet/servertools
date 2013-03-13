@@ -20,12 +20,13 @@ import fr.lelouet.servertools.temperature.RetrieveSCV;
 import fr.lelouet.servertools.temperature.ServerSensor;
 import fr.lelouet.tools.containers.DelayingContainer;
 
-
 /**
  * @author Guillaume Le Louët
  *
  */
-public class RemoteConnection implements fr.lelouet.servertools.temperature.ServerConnection {
+public class RemoteConnection
+		implements
+			fr.lelouet.servertools.temperature.ServerConnection {
 
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory
 			.getLogger(RemoteConnection.class);
@@ -41,10 +42,10 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 	public void connect(String adress, int port) {
 		try {
 			clientSocket = new Socket(adress, port);
-			reader = new BufferedReader(new InputStreamReader(
-					clientSocket.getInputStream()));
-			writer = new BufferedWriter(new OutputStreamWriter(
-					clientSocket.getOutputStream()));
+			reader = new BufferedReader(new InputStreamReader(clientSocket
+					.getInputStream()));
+			writer = new BufferedWriter(new OutputStreamWriter(clientSocket
+					.getOutputStream()));
 		} catch (UnknownHostException e1) {
 			logger.warn("", e1);
 			return;
@@ -101,10 +102,10 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 			public void run() {
 				try {
 					// System.err.println("starting writing for retrieve");
-					writer.write(RemoteExporter.RETRIEVEORDER+"\n");
+					writer.write(RemoteExporter.RETRIEVEORDER + "\n");
 					writer.flush();
-					String line=null;
-					String parsed=null;
+					String line = null;
+					String parsed = null;
 					while ((line = reader.readLine()) != null
 							&& !line.equals(RemoteExporter.RETRIEVEORDER)) {
 						// System.err.println("read : " + line);
@@ -115,7 +116,8 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 						SensorsEntry se = RemoteExporter
 								.parseSensorsEntry(parsed);
 						if (se == null) {
-							System.err.println("could not parse "+parsed+" to a SensorsEntry");
+							System.err.println("could not parse " + parsed
+									+ " to a SensorsEntry");
 						}
 						retrievingEntry.set(se);
 					}
@@ -123,8 +125,9 @@ public class RemoteConnection implements fr.lelouet.servertools.temperature.Serv
 					logger.warn("", e);
 					retrievingEntry.set(null);
 				}
-				retrievingEntry=null;
-			}}).start();
+				retrievingEntry = null;
+			}
+		}).start();
 		return ret;
 	}
 

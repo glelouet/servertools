@@ -14,7 +14,7 @@ public class LocalSensor implements ServerSensor {
 
 	@SuppressWarnings("unused")
 	private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory
-	.getLogger(LocalSensor.class);
+			.getLogger(LocalSensor.class);
 
 	protected LocalLmConnection parent;
 

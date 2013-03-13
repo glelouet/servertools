@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.lelouet.servertools</groupId>
+    <artifactId>temperature</artifactId>
+    <version>0.11.5-SNAPSHOT</version>
+  </parent>
+  <groupId>fr.lelouet.servertools.temperature</groupId>
+  <artifactId>temperature-IPMI</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>verax</groupId>
+  		<artifactId>commons-vxipmi-library</artifactId>
+  		<version>1.0.12</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>fr.lelouet.servertools.temperature</groupId>
+  		<artifactId>temperature-API</artifactId>
+  	</dependency>
+  </dependencies>
+  <name>temperature-IPMI</name>
+</project>

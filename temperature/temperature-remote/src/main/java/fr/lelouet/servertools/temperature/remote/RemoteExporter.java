@@ -37,12 +37,13 @@ public class RemoteExporter {
 			InetSocketAddress iaddr = new InetSocketAddress(localport);
 			sChan.configureBlocking(false);
 			sChan.socket().bind(iaddr);
-			System.err.println("Running on port:" + sChan.socket().getLocalPort());
+			System.err.println("Running on port:"
+					+ sChan.socket().getLocalPort());
 			sChan.register(selector, SelectionKey.OP_ACCEPT);
 			HashMap<SelectionKey, ExternalConnection> sockets = new HashMap<SelectionKey, ExternalConnection>();
 			while (selector.select() > 0) {
-				for (Iterator<SelectionKey> i = selector.selectedKeys().iterator(); i
-						.hasNext();) {
+				for (Iterator<SelectionKey> i = selector.selectedKeys()
+						.iterator(); i.hasNext();) {
 					SelectionKey key = i.next();
 					i.remove();
 					// System.err.println("key " + key + " selected");
@@ -58,7 +59,8 @@ public class RemoteExporter {
 						ec.socketChannel = client;
 						logger.debug("new external connection : "
 								+ client.socket().getPort());
-						sockets.put(client.register(selector, SelectionKey.OP_READ), ec);
+						sockets.put(client.register(selector,
+								SelectionKey.OP_READ), ec);
 					}
 					if (key.isReadable()) {
 						if (key.channel().isOpen()) {
@@ -70,8 +72,7 @@ public class RemoteExporter {
 					}
 				}
 			}
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			logger.warn("", e);
 		}
 	}
@@ -102,15 +103,13 @@ public class RemoteExporter {
 				String order = s.substring(0, idx);
 				s = s.substring(idx + 1);
 				ec.socketChannel.write(ByteBuffer.wrap((answer(order,
-						connection) + "\n")
-						.getBytes()));
+						connection) + "\n").getBytes()));
 				// System.err.println("after answering " + order + ", buffer=" +
 				// s);
 			}
 			ec.buffer.clear();
 			ec.buffer.asCharBuffer().put(s);
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			logger.warn("", e);
 		}
 	}
@@ -125,8 +124,7 @@ public class RemoteExporter {
 	 * @param order the String order to execute
 	 * @param connection the sensors to get the temperature from.
 	 * @return the resulting answer of the order. */
-	public static String answer(String order,
-			ServerConnection connection) {
+	public static String answer(String order, ServerConnection connection) {
 		// System.err.println("order : " + order);
 		if (order == null || order.length() == 0) {
 			return null;
@@ -162,7 +160,8 @@ public class RemoteExporter {
 	public static String plainSensorsEntry(SensorsEntry entry) {
 		StringBuilder sb = new StringBuilder("" + entry.date);
 		for (Entry<String, Double> e : entry.entrySet()) {
-			sb.append("\n").append(e.getKey()).append(" : ").append(e.getValue());
+			sb.append("\n").append(e.getKey()).append(" : ").append(
+					e.getValue());
 		}
 		return sb.toString();
 	}
