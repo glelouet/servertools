@@ -16,7 +16,6 @@ import java.util.regex.Pattern;
 import fr.lelouet.servertools.temperature.RetrieveSCV;
 import fr.lelouet.servertools.temperature.ServerConnection;
 import fr.lelouet.servertools.temperature.ServerSensor;
-import fr.lelouet.servertools.temperature.remote.RemoteExporter;
 import fr.lelouet.tools.containers.DelayingContainer;
 
 /**
@@ -136,25 +135,9 @@ public class LocalLmConnection implements ServerConnection {
 		return ret;
 	}
 
-	public static final String EXPORT_ARG = "-export";
-
 	public static void main(String[] args) {
 		LocalLmConnection conn = new LocalLmConnection();
-		int export = -1;
-		for (String arg : args) {
-			if (arg.startsWith(EXPORT_ARG)) {
-				String port = arg.substring(EXPORT_ARG.length());
-				export = port.length() > 0
-						? Integer.parseInt(port)
-						: RemoteExporter.DEFAULT_PORT;
-
-			}
-		}
-		if (export == -1) {
-			RetrieveSCV.main(args, conn);
-		} else {
-			RemoteExporter.export(conn, export);
-		}
+		RetrieveSCV.main(args, conn);
 	}
 
 	@Override
