@@ -38,25 +38,25 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy jar to site</id>
-						<phase>deploy</phase>
-						<configuration>
-							<target>
-								<copy tofile="${consumption.filesdir}/${hameg.jarName}.jar" file="target/hameg-jar-with-dependencies.jar" />
-								<copy tofile="${consumption.filesdir}/hameg.last.jar" file="target/hameg-jar-with-dependencies.jar" />
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>copy jar to site</id> -->
+<!-- 						<phase>deploy</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<target> -->
+<!-- 								<copy tofile="${consumption.filesdir}/${hameg.jarName}.jar" file="target/hameg-jar-with-dependencies.jar" /> -->
+<!-- 								<copy tofile="${consumption.filesdir}/hameg.last.jar" file="target/hameg-jar-with-dependencies.jar" /> -->
+<!-- 							</target> -->
+<!-- 						</configuration> -->
+<!-- 						<goals> -->
+<!-- 							<goal>run</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 	<repositories>
