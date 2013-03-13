@@ -98,7 +98,7 @@ public class LocalLmConnection implements ServerConnection {
 	}
 
 	public static final Pattern LINEPATTERN = Pattern
-			.compile("(.*): +\\+([^°]*).*");
+			.compile("(.*): +\\+([^°]*)°C.*");
 
 	public static String[] parseSensorLine(String line) {
 		Matcher m = LINEPATTERN.matcher(line);
@@ -113,6 +113,7 @@ public class LocalLmConnection implements ServerConnection {
 	}
 
 	public static final String ADAPTER_PREFIX = "Adapter: ";
+	public static final String SENSOR_MARKER = ": ";
 
 	protected SensorsEntry lastVal = null;
 
@@ -127,7 +128,7 @@ public class LocalLmConnection implements ServerConnection {
 			String[] t = parseSensorLine(line);
 			if (t != null) {
 				ret.put(prefix + t[0], Double.parseDouble(t[1]));
-			} else if (!line.startsWith(ADAPTER_PREFIX)) {
+			} else if (!line.contains(SENSOR_MARKER)) {
 				prefix = line + ".";
 			}
 		}

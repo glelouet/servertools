@@ -39,7 +39,7 @@
 							</descriptorRefs>
 							<archive>
 								<manifest>
-									<mainClass>fr.lelouet.servertools.temperature.remot.RemoteConnection</mainClass>
+									<mainClass>fr.lelouet.servertools.temperature.remote.RemoteConnection</mainClass>
 								</manifest>
 							</archive>
 						</configuration>
