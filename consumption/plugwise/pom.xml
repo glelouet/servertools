@@ -5,9 +5,9 @@
 		<version>0.11.3-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>fr.lelouet.server.consumption</groupId>
+	<groupId>fr.lelouet.servertools.consumption</groupId>
 	<artifactId>plugwise</artifactId>
-	<name>plugwise</name>
+	<name>consumption-plugwise</name>
 	<description>driver for getting informations with the plugwise protocole</description>
 	<repositories>
 		<repository>
