@@ -3,7 +3,7 @@
   <parent>
     <groupId>fr.lelouet</groupId>
     <artifactId>servertools</artifactId>
-    <version>0.11.5-SNAPSHOT</version>
+    <version>0.11.5</version>
   </parent>
   <groupId>fr.lelouet.servertools</groupId>
   <artifactId>temperature</artifactId>

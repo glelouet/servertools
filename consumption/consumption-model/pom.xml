@@ -2,7 +2,7 @@
 	<parent>
 		<artifactId>consumption</artifactId>
 		<groupId>fr.lelouet.servertools</groupId>
-		<version>0.11.5-SNAPSHOT</version>
+		<version>0.11.5</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.lelouet.servertools.consumption</groupId>
