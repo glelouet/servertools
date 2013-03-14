@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>consumption</artifactId>
 		<groupId>fr.lelouet.servertools</groupId>
-		<version>0.11.5</version>
+		<version>0.11.6-SNAPSHOT</version>
 	</parent>
 	<groupId>fr.lelouet.servertools.consumption</groupId>
 	<artifactId>consumption-main</artifactId>

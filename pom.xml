@@ -5,7 +5,7 @@
 	<artifactId>servertools</artifactId>
 	<packaging>pom</packaging>
 	<name>servertools</name>
-	<version>0.11.5</version>
+	<version>0.11.6-SNAPSHOT</version>
 	<description>contain tools to use, modelize and monitor servers and virtual machines, alone or in a datacenter</description>
 	<scm>
 		<connection>scm:git:git://github.com/glelouet/servertools.git</connection>
